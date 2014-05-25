@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- la expresion spring (spel) se escribe entre #{} en este ejemplo en 
+		el value! 
+		
+		el operador ? se usa para indicar que solamente se ejecuta
+		la funcion cuando el resultado de getText() no es null-->
+	<bean id="robot" class="emg.demos.spring.spel.xml.Robot">
+		<property name="id" value="#{randomText.getText()?.length()}"></property>
+		<property name="speech" value="#{'Random text: ' + randomText.getText()}"></property>
+	</bean>
+	<bean id="randomText" class="emg.demos.spring.spel.xml.RandomText"></bean>
+</beans>
